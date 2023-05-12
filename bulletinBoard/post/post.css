@@ -1,0 +1,273 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'NanumSquareNeo-Variable';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    color: black;
+}
+
+/* 바디 전체 */
+body {
+    background: url(./images/UDiroBackgroundIMG.jpg) no-repeat;
+    background-size: cover;
+}
+
+/* 컨테이너 */
+#container {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+/* 헤더 전체 */
+header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: gray;
+    opacity: 0.85;
+    line-height: 70px;
+}
+
+/* 헤더의 로고 이미지 */
+#main__logo {
+    margin: 0 auto;
+}
+
+header>div>img {
+    width: 130px;
+}
+
+/* 헤더 메뉴부분 전체 */
+#header__menu {
+    width: 90%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+    font-weight: 700;
+}
+
+.header__menu__list {
+    color: white;
+}
+
+/* 헤더의 메뉴 리스트 */
+header>ul>li {
+    margin-right: 10%;
+}
+
+/* 로그인 회원가입 */
+.login__signUp {
+    width: 7%;
+    display: flex;
+    justify-content: right;
+    font-size: 12px;
+}
+
+#signUp {
+    margin-right: 30px;
+}
+
+#logout {
+    margin-right: 15px;
+}
+
+/* 헤더 끝 */
+/* notice__board start */
+#notice__board {
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+#content__img {
+    width: 400px;
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.notice__board__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notice__board__info__icon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.notice__board__info__icon>p {
+    margin-right: 10px;
+}
+
+#content {
+    margin-bottom: 60px;
+}
+
+.likes__report {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.likes__report>p {
+    margin-left: 20px;
+}
+
+.input__box {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+#comment__input {
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+    border: 1px solid gray;
+    height: 40px;
+    margin-bottom: 10px;
+    width: 89%;
+    font-size: 15px;
+}
+
+#confirm__btn {
+    width: 10%;
+    height: 40px;
+}
+
+#author {
+    color: blue;
+}
+
+.commnet__contents>.comment__icon {
+    display: flex;
+}
+
+.comment__icon {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.comment__icon>p {
+    margin-right: 10px;
+}
+
+.comment__icon>#report {
+    margin-left: auto;
+}
+
+.list__box {
+    width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+#pre__box {
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 549px;
+    text-align: center;
+}
+
+#next__box {
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 549px;
+    text-align: center;
+}
+
+.list {
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 550px;
+    text-align: center;
+    margin: 0 auto;
+    height: 40px;
+    line-height: 40px;
+}
+
+.list>a {
+    text-decoration: none;
+}
+
+.author__timelog {
+    display: flex;
+    justify-content: space-between;
+}
+
+#side__bar {
+    width: 200px;
+    border: 1px solid black;
+    height: 800px;
+    position: sticky;
+    left: 0;
+    top: 80px;
+}
+
+#big__container {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.sidebar__bigMenu {
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+}
+
+.sidebar__midMenu {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.sidebar__smallMenu {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#width {
+    width: 20%;
+}
+
+#centerGo {
+    width: 10%;
+}

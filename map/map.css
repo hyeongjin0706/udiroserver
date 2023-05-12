@@ -1,0 +1,233 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+body{
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+
+
+* {
+    box-sizing: border-box;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* 바디 전체 */
+body {
+    background: url(./images/UDiroBackgroundIMG.jpg) no-repeat;
+    background-size: cover;
+}
+
+/* 컨테이너 */
+#container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* 헤더 전체 */
+
+header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    background-color: gray;
+    opacity: 0.85;
+    line-height: 10vh;
+    position: relative;
+
+}
+
+
+/* 헤더의 로고 이미지 */
+#main__logo{
+    margin: 0 auto;
+}
+header>div>img {
+    width: 100px;
+}
+
+/* 헤더 메뉴부분 전체 */
+#header__menu {
+    width: 90%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+/* 헤더의 메뉴 리스트 */
+header>ul>li {
+    margin-right: 10%;
+}
+
+/* 로그인 회원가입 */
+.login__signUp {
+    width: 7%;
+    display: flex;
+    justify-content: right;
+    font-size: 12px;
+}
+
+/* 헤더 끝 */
+
+
+
+
+
+/* 중앙 메인 로고 */
+#main__logo {
+    display: block;
+}
+#main__logo > img {
+    width: 300px;
+    margin-top: 100px;
+}
+
+/* 검색창 시작 */
+
+#Search__description > span {
+    /* 검색창의 search 부분 div*/
+    
+}
+
+
+
+/*map부분*/
+
+#map {
+    height: 100%;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #image-buttons {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    z-index: 9999;
+  }
+  
+  #image-buttons button {
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  #image-buttons img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* seach이미지 눌렀을떄*/
+  #search-bar {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 90px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+#search-bar__close {
+    float: right;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+  #search-bar.active {
+    display: block;
+  }
+
+   /*see 눌렀을때*/
+   .seecheckbox{
+    display: none;
+  }
+  .seecheckbox input {
+    width: 25px;
+    height: 25px;
+    margin: auto 5px;
+  }
+  .seecheckbox-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .active {
+    display: flex;
+  }
+
+
+  /* 헤더 전체 */
+header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  background-color: gray;
+  opacity: 0.85;
+  line-height: 70px;
+}
+
+/* 헤더의 로고 이미지 */
+#main__logo {
+  margin: 0 auto;
+}
+
+header > div > img {
+  width: 115px;
+}
+
+/* 헤더 메뉴부분 전체 */
+#header__menu {
+  width: 90%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+  font-weight: 700;
+}
+
+.header__menu__list {
+  color: white;
+}
+
+/* 헤더의 메뉴 리스트 */
+header > ul > li {
+  margin-right: 10%;
+}
+
+/* 로그인 회원가입 */
+.login__signUp {
+  width: 7%;
+  display: flex;
+  justify-content: right;
+  font-size: 12px;
+}
+
+#signUp {
+  margin-right: 30px;
+}
+
+#logout {
+  margin-right: 15px;
+}
+
+/* 헤더 끝 */
