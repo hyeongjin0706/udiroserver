@@ -7,41 +7,55 @@ const DataTypes = SQ.DataTypes;
 export const User = sequelize.define(
     "user",
     {
-        id:{
+        // 인덱스
+        user_idx:{
             type:DataTypes.INTEGER,
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
         },
-        username:{
-            type:DataTypes.STRING(45),
-            allowNull:false
-        },
-        password:{
+        // 이름
+        user_name:{
             type:DataTypes.STRING(128),
             allowNull:false
         },
-        name:{
-            type:DataTypes.STRING(45),
-            allowNull:false
+        // 아이디
+        user_id:{
+            type:DataTypes.STRING(128),
+            allowNull:false,
+            unique: true
         },
-        email:{
+        // 비밀번호
+        user_pw:{
             type:DataTypes.STRING(128),
             allowNull:false
         },
-        url:DataTypes.TEXT,
-        regdate:{
-            type:DataTypes.DATE, 
-            defaultValue: DataTypes.NOW
+        // 이메일
+        user_email:{
+            type:DataTypes.STRING(128),
+            allowNull:false,
+            unique: true
+        },
+        // 핸드폰번호
+        user_phone:{
+            type:DataTypes.STRING(128),
+            allowNull:false,
+            unique: true
+        },
+        // 자주가는 장소
+        user_area:{
+            type:DataTypes.STRING(128)
+        },
+        // 회원 스테이터스
+        user_status:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
+            defaultValue: 0
         }
-        // regdate:날짜타입, 현재시간을 자동으로 등록
     },
     {timestamps: false} // true면 createdAt, updatedAt 컬럼이 자동으로 생김
 );
 
-export async function searchID(username) {
-    return User.findOne({where: {username}});
-}
 
 export async function findById(id) {
     return User.findByPk(id);
