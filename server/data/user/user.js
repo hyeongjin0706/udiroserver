@@ -1,5 +1,5 @@
 import SQ from "sequelize";
-import {sequelize} from "../db/database.js";
+import {sequelize} from "../../db/database.js";
 const DataTypes = SQ.DataTypes;
 
 // 기존의 테이블이 없으면 테이블을 생성하고, 있으면 생성하지 않음
@@ -55,12 +55,16 @@ export const User = sequelize.define(
     },
     {timestamps: false} // true면 createdAt, updatedAt 컬럼이 자동으로 생김
 );
-
-
-export async function findById(id) {
-    return User.findByPk(id);
-}
+// user_idx user_name user_id user_pw user_email user_phone user_area
 
 export async function createUser(user) {
-    return User.create(user).then((data)=>data.dataValues.id);
+    return User.create(user).then((data)=>data.dataValues.user_idx);
+}
+
+export async function searchById(user_id) {
+    return User.findOne({where: {user_id}});
+}
+
+export async function searchByIdx(user_idx) {
+    return User.findByPk(user_idx);
 }

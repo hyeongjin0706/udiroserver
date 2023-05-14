@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import loginRouter from "./router/login.js";
+import authRouter from "./router/auth.js";
 import {config} from "./config.js";
 import {sequelize} from "./db/database.js"
 
@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
 
-app.use("/login", loginRouter);
+app.use("/auth", authRouter);
 
 app.use((req, res, next) => {
     res.sendStatus(404);
