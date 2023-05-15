@@ -35,6 +35,35 @@ export async function login(req, res) {
     res.status(200).json({token, user_id});
 }
 
+export async function findId(req, res, next) {
+    const {user_name, user_phone} = req.body;
+    const user = await(userRepository.searchByNameHP(user_name, user_phone));
+    if(!user){
+        return res.status(404).json({message: "사용자가 존재하지 않습니다."})
+    }
+    res.status(200).json({token:req.token, user_id: user.user_id});
+}
+
+export async function findPw(req, res, next) {
+    const {user_id, user_phone} = req.body;
+    const user = await(userRepository.searchByIdHP(user_id, user_phone));
+    if(!user){
+        return res.status(404).json({message: "사용자가 존재하지 않습니다."})
+    }
+    const token = createJwtToken(user.user_idx);
+    res.status(200).json({token, user_id: user.user_id});
+}
+
+export async function updatePw(req, res, next) {
+    
+    const user = await(userRepository.searchByIdHP(user_id, user_phone));
+    if(!user){
+        return res.status(404).json({message: "사용자가 존재하지 않습니다."})
+    }
+
+    res.status(200).json({token:req.token, user_id: user.user_id});
+}
+
 export async function me(req, res, next) {
     const user = await(userRepository.searchByIdx(req.user_idx));
     if(!user){
@@ -42,6 +71,8 @@ export async function me(req, res, next) {
     }
     res.status(200).json({token:req.token, user_id: user.user_id});
 }
+
+
 
 function createJwtToken(idx) {
     return jwt.sign({idx}, config.jwt.secretKey, { expiresIn: config.jwt.expiresInSec});

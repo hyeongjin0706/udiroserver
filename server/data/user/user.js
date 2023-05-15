@@ -68,3 +68,11 @@ export async function searchById(user_id) {
 export async function searchByIdx(user_idx) {
     return User.findByPk(user_idx);
 }
+
+export async function searchByNameHP(user_name, user_phone) {
+    return User.findOne({where: {user_name, user_phone}});
+}
+
+export async function searchByIdHP(user_id, user_phone) {
+    return User.findOne({where: {user_id, user_phone}});
+}

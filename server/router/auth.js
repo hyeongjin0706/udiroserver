@@ -8,6 +8,10 @@ router.post('/signup', authController.signup);
 
 router.post('/login', authController.login);
 
+router.post('/findid', authController.findId);
+
+router.post('/findpw', authController.findPw);
+
 router.get('/me', isAuth, authController.me);
 
 export default router;
