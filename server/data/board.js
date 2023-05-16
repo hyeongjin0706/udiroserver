@@ -8,42 +8,43 @@ const DataTypes = SQ.DataTypes;
 export const Board = sequelize.define(
   'board',
   {
+    // 게시글 번호
     board_idx: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
-
+    // 게시글 카테고리
     board_category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    // 게시글 제목
     board_title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    // 게시글 내용
     board_content: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
 
     // author 어떻게 추가 -> user_name?
-
+    // 게시글 추천 수
     board_likes: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
     },
-
+    // 게시글 조회 수
     board_views: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
     },
-
+    // 게시글 댓글
     board_comment: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -83,6 +84,28 @@ export async function getAll() {
   return Board.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
 }
 
+// Username으로 찾기
+export async function getAllByUsername(user_name) {
+  return Board.findAll({
+      ...INCLUDE_USER,
+      ...ORDER_DESC,
+      include: {
+          ...INCLUDE_USER.include,
+          where: {
+              user_name
+          }
+      }
+  });
+}
+
+// Id로 찾기
+export async function getById(board_idx) {
+  return Board.findOne({
+    where: {board_idx},
+    ...INCLUDE_USER
+  })
+}
+
 // 게시글 생성
 // board_title, board_content, board_category 정보와 함께, 현재 접속한 사용자의 정보(user_id)를 바탕으로 새로운 게시글을 작성합니다.
 export async function create(board_title, board_content, board_category, user_id) {
@@ -101,4 +124,4 @@ export async function update(board_idx, board_title, board_content, board_catego
 // 입력된 board_idx의 게시글을 삭제합니다.
 export async function deleteBoard(board_idx) {
   return Board.destroy({ where: { board_idx } });
-}
+};

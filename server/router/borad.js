@@ -42,7 +42,7 @@ router.post('/', isAuth, validateBoard, boardController.CreateBoard);
 // content
 // router.put('/:id', isAuth, validateBoard, boardController.UpdateBoard);
 
-// DELETE
-// router.delete('/:id', isAuth, boardController.deleteBoard);
+DELETE
+router.delete('/:id', isAuth, boardController.deleteBoard);
 
 export default router;
