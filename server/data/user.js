@@ -1,6 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
-import { Board } from './board.js';
+
 const DataTypes = SQ.DataTypes;
 
 // 기존의 테이블이 없으면 테이블을 생성하고, 있으면 생성하지 않음
