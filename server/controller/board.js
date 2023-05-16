@@ -19,8 +19,8 @@ export async function getBoard(req, res, next) {
 }
 
 export async function CreateBoard(req, res, next) {
-  const { text } = req.body;
-  const board = await boardRepository.create(text, req.userId);
+  const { content } = req.body;
+  const board = await boardRepository.create(content, req.user_idx);
   res.status(201).json(board);
 }
 
