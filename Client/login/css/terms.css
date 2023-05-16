@@ -1,0 +1,56 @@
+#logoContainer img{
+    width: 15%;
+    height: 15%;
+}
+#logoContainer{
+    text-align: center;
+}
+#termsContainer{
+    text-align: center;
+    width: 460px;
+    margin: 0 auto;
+}
+#checkAllText{
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.termsText{
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.termsTextSub{
+    font-size: 12px;
+    color: gray;
+}
+.of {height: 88px; overflow-x: hidden; overflow-y: scroll;box-sizing: border-box; border: 1px solid rgb(221, 221, 221); clear: both;}
+.terms{
+    float: left;
+}
+
+.btn {
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 5px 5px 5px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+        background-color: #fff;
+        color: #3498db;
+        border: 2px solid #3498db;
+    }
+span.btn{
+    line-height: 50px;
+}
