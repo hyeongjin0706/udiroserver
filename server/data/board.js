@@ -15,8 +15,8 @@ export const Board = sequelize.define(
       primaryKey: true,
     },
 
-    board_content: {
-      type: DataTypes.TEXT,
+    board_category: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
 
@@ -25,15 +25,17 @@ export const Board = sequelize.define(
       allowNull: false,
     },
 
+    board_content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+
+    // author 어떻게 추가 -> user_name?
+
     board_likes: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
-    },
-
-    board_category: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
 
     board_views: {
@@ -45,7 +47,10 @@ export const Board = sequelize.define(
     board_comment: {
       type: DataTypes.TEXT,
       allowNull: true,
-    }
+    },
+
+    // board_attachment 추가 방식
+    // 파일이 들어오면 0, 1로 표현?
   }
 );
 
