@@ -30,7 +30,8 @@ router.get('/', isAuth, boardController.getBoards);
 // /boards/:title
 // router.get('/:id', isAuth, boardController.getBoard);
 
-// POST
+// POST!
+// create
 router.post('/', isAuth, validateBoard, boardController.CreateBoard);
 
 // PUT
