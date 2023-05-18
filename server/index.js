@@ -23,9 +23,7 @@ app.use((error, req, res, next) => {
   res.sendStatus(500);
 });
 
-sequelize.sync()
-
-// 몽고추가
-connectDB().catch(console.error);
-
-app.listen(config.host.port);
+sequelize.sync().then(() => {
+  const server =app.listen(config.host.port);
+initSocket(server);
+})

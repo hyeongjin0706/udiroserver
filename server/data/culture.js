@@ -1,70 +1,99 @@
-import MongoDb from 'mongodb';
-import { getCultures } from '../db/database.js';
-import * as UserRepository from './auth.js';
+// import { db } from '../db/database.js';
+import SQ, { Sequelize } from 'sequelize';
+import { sequelize } from '../db/database.js';
+import { User } from './auth.js';
 
-const ObjectID = MongoDb.ObjectId;
+const DataTypes = SQ.DataTypes;
 
-export async function getAll() {
-    return getCultures()
-        .find()
-        .sort({ createdAt: -1 })
-        .toArray()
-        .then(mapCultures);
+// 수정
+export const Culture = sequelize.define(
+    'culture',
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            allowNull: false,
+            primaryKey: true
+        },
+
+        text: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+    }
+);
+
+Culture.belongsTo(User);
+
+// 수정
+const INCLUDE_USER = {
+    attributes: [
+        'id',
+        'text',
+        'createdAt',
+        'userId',
+        [Sequelize.col('user.name'), 'name'],
+        [Sequelize.col('user.username'), 'username'],
+        [Sequelize.col('user.url'), 'url'],
+    ],
+    include: {
+        model: User,
+        attributes: [],
+    }
+}
+
+const ORDER_DESC = {
+    order: [['createdAt', 'DESC']]
 };
 
-export async function getAllByUsername(user_name) {
-    return getCultures()
-    .find({user_name})
-    .sort({ createdAt: -1 })
-    .toArray()
-    .then(mapCultures);
+export async function getAll() {
+    return Culture.findAll({ ...INCLUDE_USER, ...ORDER_DESC })
+
+};
+
+// 수정
+export async function getAllByUsername(username) {
+    return Culture.findAll({
+        ...INCLUDE_USER,
+        ...ORDER_DESC,
+        include: {
+            ...INCLUDE_USER.include,
+            where: {
+                username
+            }
+        }
+    });
 }
 
-//수정 id -> ?
+// 수정
 export async function getById(id) {
-    return getCultures()
-    .find({_id: new ObjectID(id)})
-    .next()
-    .then(mapOptionalCulture);
+    return Culture.findOne({
+        where: {id},
+        ...INCLUDE_USER
+    })
 }
 
-// crud
-// 수정 userId, text
+// 수정
 export async function create(text, userId) {
-    return UserRepository.findById(userId)
-        .then((user) => getTweets().insertOne({
-            text,
-            createAt: new Date(),
-            userId,
-            name : user.name,
-            username: user.username,
-            url: user.url
-        }))
-        .then((res) => console.log(res))
-        .then(mapOptionalTweet);
+    return Culture.create({text, userId})
+        .then((data) => {
+            return data;
+        });
 }
 
-// 수정 userId, text
+// 수정
 export async function update(id, text) {
-    return getTweets().findOneAndUpdate(
-        {_id: new ObjectID(id) },
-        { $set: { text }},
-        { returnOriginal: false }
-    )
-    .then((res) => res.value)
-    .then(mapOptionalTweet);
+    return Culture.findByPk(id, INCLUDE_USER)
+        .then((Culture) => {
+            Culture.text = text;
+            return Culture.save();
+        });
 }
 
-// 수정 id
+// 수정
 export async function remove(id) {
-    return getTweets().deleteOne({ _id: new ObjectID(id)});
-}
-
-// add
-function mapOptionalTweet(tweet){
-    return tweet ? { ...tweet, id: tweet._id.toString() } : tweet;
-}
-
-function mapTweets(tweet) {
-    return tweet.map(mapOptionalTweet);
+    return Culture.findByPk(id)
+        .then((Culture) => {
+            Culture.destroy();
+        })
 }

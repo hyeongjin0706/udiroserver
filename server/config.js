@@ -27,22 +27,3 @@ export const config = {
     password: required('DB_PASSWORD'),
   },
 };
-
-export const mgconfig = {
-  jwt: {
-      secretKey: required('JWT_SECRET'),
-      expiresInsec: parseInt(required('JWT_EXPIRES_SEC', 86400))
-  },
-  
-  bcrypt: {
-      saltRounds: parseInt(required('BCRYPT_SALT_ROUND', 12)),
-  },
-
-  host: {
-      port:parseInt(required('SERVER_PORT', 8080))
-  },
-
-  db: {
-      host: required('DB_MGHOST')
-  }
-}
