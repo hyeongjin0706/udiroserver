@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import authRouter from './router/auth.js';
-import cultureRouter from './router/culture.js';
+import placeRouter from './router/c_place.js';
 import { sequelize } from './db/database.js';
 import { config } from './config.js'
 const app = express();
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 
 app.use('/auth', authRouter);
-app.use('/culture', cultureRouter)
+app.use('/place', placeRouter)
 
 app.use((req, res, next) => {
   res.sendStatus(404);

@@ -5,7 +5,7 @@ import { sequelize } from '../db/database.js';
 const DataTypes = SQ.DataTypes;
 
 // 수정
-export const Culture = sequelize.define(
+export const c_place = sequelize.define(
     'culture_place',
     {
         place_NUM: {
@@ -110,7 +110,8 @@ export const Culture = sequelize.define(
             type: DataTypes.TEXT,
             allowNull: false,
         }
-    }
+    },
+    {timestamps: false}
 );
 
 // 수정
@@ -119,12 +120,12 @@ const ORDER_DESC = {
 };
 
 export async function getAll() {
-    return Culture.findAll({ ...ORDER_DESC })
+    return c_place.findAll({ ...ORDER_DESC })
 };
 
 // 수정 -> 필터 포함 시 날짜, 지역, 카테고리로 검색이므로 3가지가 필요
 // export async function getAllByData(username) {
-//     return Culture.findAll({
+//     return c_place.findAll({
 //         ...ORDER_DESC,
 //         where: {
 //             username
@@ -134,7 +135,7 @@ export async function getAll() {
 
 
 // export async function getAllByLocation(username) {
-//     return Culture.findAll({
+//     return c_place.findAll({
 //         ...ORDER_DESC,
 //         where: {
 //             username
@@ -143,7 +144,7 @@ export async function getAll() {
 // }
 
 // export async function getAllByCategory(username) {
-//     return Culture.findAll({
+//     return c_place.findAll({
 //         ...ORDER_DESC,
 //         where: {
 //             username
@@ -152,7 +153,7 @@ export async function getAll() {
 // }
 
 // export async function getAllByTitle(username) {
-//     return Culture.findAll({
+//     return c_place.findAll({
 //         ...ORDER_DESC,
 //         where: {
 //             username
@@ -161,7 +162,7 @@ export async function getAll() {
 // }
 
 // export async function getAllBy(username) {
-//     return Culture.findAll({
+//     return c_place.findAll({
 //         ...ORDER_DESC,
 //         where: {
 //             username
@@ -171,12 +172,12 @@ export async function getAll() {
 
 // 바꿀려면 변수 값만 수정하면 됩니다
 export async function getByPK(place_NUM) {
-    return Culture.findByPk(place_NUM)
+    return c_place.findByPk(place_NUM)
 }
 
 // 변수 값만 수정하면 됩니다
 export async function create(AIRPORT) {
-    return Culture.create({ AIRPORT })
+    return c_place.create({ AIRPORT })
         .then((data) => {
             return data;
         });
@@ -184,7 +185,7 @@ export async function create(AIRPORT) {
 
 // 찾는 방법 : place_NUM , 바꿀 내용 : AIRPORT -> 변수 값만 수정하면 됩니다
 export async function update(place_NUM, AIRPORT) {
-    return Culture.findByPk(place_NUM)
+    return c_place.findByPk(place_NUM)
         .then((data) => {
             data.AIRPORT = AIRPORT;
             return data.save();
@@ -193,7 +194,7 @@ export async function update(place_NUM, AIRPORT) {
 
 // 수정
 export async function remove(place_NUM) {
-    return Culture.findByPk(place_NUM)
+    return c_place.findByPk(place_NUM)
         .then((data) => {
             data.destroy();
         })
