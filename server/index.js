@@ -2,10 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import authRouter from './router/auth.js';
-import { mgconfig, config } from './config.js';
 import { sequelize } from './db/database.js';
-import { connectDB } from "./db/mongodatabase.js";
-
+import { config } from './config.js'
 const app = express();
 
 app.use(express.json());
@@ -25,5 +23,4 @@ app.use((error, req, res, next) => {
 
 sequelize.sync().then(() => {
   const server =app.listen(config.host.port);
-initSocket(server);
 })
