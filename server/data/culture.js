@@ -20,19 +20,19 @@ export const Culture = sequelize.define(
         },
         FAC_NAME: {
             type: DataTypes.STRING(50),
-            allowNull: false,
+            allowNull: true,
         },
         ADDR: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
+            allowNull: true,
         },
         X_COORD: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
+            allowNull: true,
         },
         Y_COORD: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
+            allowNull: true,
         },
         PHNE: {
             type: DataTypes.STRING(50),
@@ -44,7 +44,7 @@ export const Culture = sequelize.define(
         },
         HOMEPAGE: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
+            allowNull: true,
         },
         OPENHOUR: {
             type: DataTypes.STRING(100),
@@ -68,7 +68,7 @@ export const Culture = sequelize.define(
         },
         MAIN_IMG: {
             type: DataTypes.STRING(1000),
-            allowNull: false,
+            allowNull: true,
         },
         ETC_DESC: {
             type: DataTypes.STRING(100),
@@ -108,66 +108,93 @@ export const Culture = sequelize.define(
         },
         AIRPORT: {
             type: DataTypes.TEXT,
-            allowNull: true,
+            allowNull: false,
         }
     }
 );
-
-console.log(Culture);
 
 // 수정
 const ORDER_DESC = {
     order: [['place_NUM', 'DESC']]
 };
 
-// export async function getAll() {
-//     return Culture.findAll({ ...INCLUDE_USER, ...ORDER_DESC })
+export async function getAll() {
+    return Culture.findAll({ ...ORDER_DESC })
+};
 
-// };
-
-// // 수정
-// export async function getAllByUsername(username) {
+// 수정 -> 필터 포함 시 날짜, 지역, 카테고리로 검색이므로 3가지가 필요
+// export async function getAllByData(username) {
 //     return Culture.findAll({
-//         ...INCLUDE_USER,
 //         ...ORDER_DESC,
-//         include: {
-//             ...INCLUDE_USER.include,
-//             where: {
-//                 username
-//             }
+//         where: {
+//             username
 //         }
 //     });
 // }
 
-// // 수정
-// export async function getById(id) {
-//     return Culture.findOne({
-//         where: { id },
-//         ...INCLUDE_USER
-//     })
+
+// export async function getAllByLocation(username) {
+//     return Culture.findAll({
+//         ...ORDER_DESC,
+//         where: {
+//             username
+//         }
+//     });
 // }
 
-// // 수정
-// export async function create(text, userId) {
-//     return Culture.create({ text, userId })
-//         .then((data) => {
-//             return data;
-//         });
+// export async function getAllByCategory(username) {
+//     return Culture.findAll({
+//         ...ORDER_DESC,
+//         where: {
+//             username
+//         }
+//     });
 // }
 
-// // 수정
-// export async function update(id, text) {
-//     return Culture.findByPk(id, INCLUDE_USER)
-//         .then((Culture) => {
-//             Culture.text = text;
-//             return Culture.save();
-//         });
+// export async function getAllByTitle(username) {
+//     return Culture.findAll({
+//         ...ORDER_DESC,
+//         where: {
+//             username
+//         }
+//     });
 // }
 
-// // 수정
-// export async function remove(id) {
-//     return Culture.findByPk(id)
-//         .then((Culture) => {
-//             Culture.destroy();
-//         })
+// export async function getAllBy(username) {
+//     return Culture.findAll({
+//         ...ORDER_DESC,
+//         where: {
+//             username
+//         }
+//     });
 // }
+
+// 바꿀려면 변수 값만 수정하면 됩니다
+export async function getByPK(place_NUM) {
+    return Culture.findByPk(place_NUM)
+}
+
+// 변수 값만 수정하면 됩니다
+export async function create(AIRPORT) {
+    return Culture.create({ AIRPORT })
+        .then((data) => {
+            return data;
+        });
+}
+
+// 찾는 방법 : place_NUM , 바꿀 내용 : AIRPORT -> 변수 값만 수정하면 됩니다
+export async function update(place_NUM, AIRPORT) {
+    return Culture.findByPk(place_NUM)
+        .then((data) => {
+            data.AIRPORT = AIRPORT;
+            return data.save();
+        });
+};
+
+// 수정
+export async function remove(place_NUM) {
+    return Culture.findByPk(place_NUM)
+        .then((data) => {
+            data.destroy();
+        })
+}
