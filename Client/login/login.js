@@ -1,3 +1,6 @@
+// const TokenStorage = require('../token/token.js');
+// const tokenStorage = new TokenStorage();
+
 function login() {
     const user_id = document.getElementById('idinput').value;
     const user_pw = document.getElementById('pwinput').value;
@@ -17,10 +20,10 @@ function login() {
         if (response.ok) {
           response.json().then(function(data) {
             const token = data.token;
-
-            // window.location.href = '../main/index.html'; // 로그인 성공 시 index.html로 리디렉션
+            console.log(token);
+            localStorage.setItem("token", token);
+            window.location.href = '../main/index.html'; // 로그인 성공 시 index.html로 리디렉션
           });
-          // window.location.href = '../main/index.html'; // 로그인 성공 시 index.html로 리디렉션
         } else {
           response.json().then(function(data) {
             alert('로그인 실패: ' + data.message); // 로그인 실패 시 알림 표시
