@@ -7,29 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" href="./css/login.css">
+    <script src="login.js" defer></script>
 </head>
-
 <body>
     <div id="logoContainer">
         <a href="../main/index.html"><img src="./img/udiro_logo_2.png" alt="udiro_logo_2"></a>
     </div>
     <div id="account">
         <div id="idpw">
-            <div id="id">
-                <input type="text" placeholder="아이디" maxlength="20" id="idinput">
-            </div>
-            <div id="pw">
-                <input type="password" placeholder="비밀번호" maxlength="20" id="pwinput">
-            </div>
-            <ul>
-                <li id="autoLogin"><label for="autoLoginBtn"><input type="checkbox" id="autoLoginBtn">자동 로그인</label>
-                </li>
-                <li id="find"><a href="./findId.html">아이디 찾기</a> | <a href="findPw.html">비밀번호 찾기</a></li>
-            </ul>
-            <div id="loginFlex">
-                <div id="loginDiv">
-                    <button id="login">로그인</button>
+                <div id="id">
+                    <input type="text" placeholder="아이디" maxlength="20" id="idinput">
                 </div>
+                <div id="pw">
+                    <input type="password" placeholder="비밀번호" maxlength="20" id="pwinput">
+                </div>
+                <ul>
+                    <li id="autoLogin"><label for="autoLoginBtn"><input type="checkbox" id="autoLoginBtn">자동 로그인</label>
+                    </li>
+                    <li id="find"><a href="./findId.html">아이디 찾기</a> | <a href="findPw.html">비밀번호 찾기</a></li>
+                </ul>
+                <div id="loginFlex">
+                    <div id="loginDiv">
+                        <button id="login" onclick="login()">로그인</button>
+                    </div>
                 <div>
                     <a id="kakao-login-btn" href="javascript:loginWithKakao()">
                         <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
@@ -43,6 +43,7 @@
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>
