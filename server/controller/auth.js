@@ -41,6 +41,9 @@ export async function findId(req, res, next) {
     if(!user){
         return res.status(404).json({message: "사용자가 존재하지 않습니다."})
     }
+    
+    sendID();
+
     res.status(200).json({token:req.token, user_id: user.user_id});
 }
 
@@ -71,8 +74,6 @@ export async function me(req, res, next) {
     }
     res.status(200).json({token:req.token, user_id: user.user_id});
 }
-
-
 
 function createJwtToken(idx) {
     return jwt.sign({idx}, config.jwt.secretKey, { expiresIn: config.jwt.expiresInSec});
