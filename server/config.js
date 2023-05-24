@@ -25,5 +25,11 @@ export const config = {
         user:required("DB_USER"),
         database:required("DB_DATABASE"),
         password:required("DB_PASSWORD")
+    },
+    email:{
+        port:required("EMAIL_PORT"),
+        id:required("EMAIL_ID"),
+        pw:required("EMAIL_PW"),
+
     }
 }

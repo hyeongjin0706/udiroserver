@@ -76,3 +76,14 @@ export async function searchByNameHP(user_name, user_phone) {
 export async function searchByIdHP(user_id, user_phone) {
     return User.findOne({where: {user_id, user_phone}});
 }
+
+export async function d(user_id) {
+    return User.findOne({where: {user_id}});
+}
+
+export async function passwordReset(user_id, user_pw) {
+    return User.findOne({where: {user_id}}).then((user) => {
+        user.user_pw = user_pw;
+        return user.save();
+    });
+}
