@@ -1,4 +1,4 @@
-function validation() {
+function findId() {
     const user_name = document.getElementById("user_name").value;
     const user_phone = document.getElementById("user_phone").value;
 
@@ -10,14 +10,15 @@ function validation() {
     fetch('http://localhost:8080/auth/findid', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
     .then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                document.getElementById("authentication").readOnly = false;
+                console.log(data.message);
+                alert(data.message)
             });
         } 
         else {

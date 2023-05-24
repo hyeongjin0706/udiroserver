@@ -1,4 +1,4 @@
-function validation() {
+function findPw() {
     const user_id = document.getElementById("user_id").value;
     const user_phone = document.getElementById("user_phone").value;
 
@@ -10,14 +10,14 @@ function validation() {
     fetch('http://localhost:8080/auth/findpw', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
     .then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                document.getElementById("authentication").readOnly = false;
+                alert(data.message)
             });
         } 
         else {

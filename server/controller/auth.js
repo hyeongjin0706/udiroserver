@@ -42,6 +42,7 @@ export async function findId(req, res, next) {
     if(!user){
         return res.status(404).json({message: "사용자가 존재하지 않습니다."})
     }
+    console.log(user.user_name);
     
     await transport.sendMail({
         from: 'udiro1111@naver.com',
@@ -49,8 +50,8 @@ export async function findId(req, res, next) {
         subject: 'UDiro 아이디 찾기',
         text: `${user.user_name}님의 아이디는 [${user.user_id}]입니다.`
     })
-
-    res.status(200).json({token:req.token, user_id: user.user_id});
+    const message = `${user.user_name}님의 메일로 아이디가 발송되었습니다!`;
+    return res.status(200).json({message});
 }
 
 export async function findPw(req, res, next) {
@@ -70,8 +71,8 @@ export async function findPw(req, res, next) {
 
     const hashed = await(bcrypt.hash(password, config.bcrypt.saltRound));
 
-    await userRepository.passwordReset(user_id, hashed);
-    return res.status(200).json({token:req.token, user_id: user.user_id});
+    const message = `${user.user_name}님의 메일로 새롭게 설정한 비밀번호가 발송되었습니다!`;
+    return res.status(200).json({message});
 }
 
 export async function updatePw(req, res, next) {
